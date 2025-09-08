@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 
-connectDB();
+
 
 // middleware
 app.use(express.json());
@@ -25,6 +25,13 @@ app.use("/api/notes", notesRoutes);
 
 const PORT = process.env.PORT || 5001;
 
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
+// Once db is connected, start the server
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server started on port ${PORT}`);
+    });
 });
+
+
+
+
