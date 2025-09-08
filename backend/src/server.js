@@ -2,6 +2,7 @@ import express from 'express';
 import notesRoutes from './routes/notesRoutes.js';
 import { connectDB } from './config/db.js';
 import dotenv from 'dotenv';    
+import rateLimiter from './middleware/rateLimiter.js';
 
 dotenv.config();
 
@@ -11,6 +12,14 @@ connectDB();
 
 // middleware
 app.use(express.json());
+
+// rate limiter middleware
+app.use(rateLimiter)
+
+// app.use((req, res, next) => {
+//     console.log(`The request method is: ${req.method} and the request URL is: ${req.url}`);
+//     next()
+// })
 
 app.use("/api/notes", notesRoutes);
 
