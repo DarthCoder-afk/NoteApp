@@ -11,6 +11,10 @@ dotenv.config();
 const app = express();
 
 
+// CORS middleware
+app.use(cors({
+     origin: "http://localhost:5173"
+}))
 
 // middleware
 app.use(express.json());
@@ -18,9 +22,7 @@ app.use(express.json());
 // rate limiter middleware
 app.use(rateLimiter)
 
-app.use(cors({
-     origin: "http://localhost:5173"
-}))
+
 
 // app.use((req, res, next) => {
 //     console.log(`The request method is: ${req.method} and the request URL is: ${req.url}`);
