@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar'
 import RateLimit from '../components/RateLimit'
 import api from '../libs/axios'
 import NoteCard from '../components/NoteCard';
+import NoNotes from '../components/NoNotes'
 
 const HomePage = () => {
   const [isRateLimited, setIsRateLimited] = useState(false);
@@ -41,13 +42,20 @@ const HomePage = () => {
         <div className='max-w-6xl mx-auto px-4 py-8'>
           {isLoading && <div className='text-center text-primary py-10'>Loading data...</div>}
 
+          {isNotes.length === 0 && !isRateLimited && (
+           <NoNotes/>
+          )}
+
           {isNotes.length > 0 && !isRateLimited && (
              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6'>
                {isNotes.map((note) => (
-                  <NoteCard key={note._id} note={note}/>
+                  <NoteCard key={note._id} note={note} setNotes={setNotes}/>
                ))}
              </div>
+             
           )}
+
+          
         </div>
     </div> 
   )
