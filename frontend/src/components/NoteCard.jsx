@@ -31,9 +31,7 @@ return <div>
             <div className="card-actions justify-between items-center mt-4">
                 <span className="text-sm text-base-content/60">{formatDate(note.createdAt)}</span>
                 <div className="flex items-center gap-1">
-                    <button className="btn btn-ghost btn-xs text-info" onClick={(e)=> {e.stopPropagation();}}>
-                        <PenSquareIcon className="size-4"/>
-                    </button>
+                    <PenSquareIcon className="size-4 stroke-blue-500"/>
                     <button className="btn btn-ghost btn-xs text-error" onClick = { (e) => {e.preventDefault();setConfirmDelete(note._id);}}>
                        <Trash2Icon className="size-4"/>
                     </button>
