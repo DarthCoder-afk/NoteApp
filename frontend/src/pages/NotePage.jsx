@@ -46,7 +46,7 @@ const NotePage = () => {
       await api.put(`/notes/${id}`,{
         title: isNote.title,
         content: isNote.content
-        
+
       });
       toast.success('Note updated successfully!')
       nav('/');
@@ -99,7 +99,7 @@ const NotePage = () => {
                 Back to Home
               </Link>
               <button onClick={(e) => {e.preventDefault; setConfirmDelete(isNote._id)}} className="btn btn-error btn-outline">
-                  <Trash2Icon className="size-5"/>
+                  <Trash2Icon className="size-5"/> Delete Note
               </button>
             </div>
 
